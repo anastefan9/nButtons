@@ -14,38 +14,38 @@ function myFunction() {
   }
 }
 
-
 function buttonFunction() {
   var n = document.getElementById("number").value;
+  var win_nr;
   if (n < 2) {
-    var win_nr = n;
+    win_nr = n;
   } else if (n < 4) {
-    var win_nr = n - 1;
+    win_nr = n - 1;
   } else if (n < 7) {
-    var win_nr = n - 3;
+    win_nr = n - 3;
   } else if (n < 11) {
-    var win_nr = n - 6;
+    win_nr = n - 6;
   } else if (n < 21) {
-    var win_nr = n - 10;
+    win_nr = n - 10;
   } else {
-    var win_nr = n - 20;
+    win_nr = n - 20;
   }
   for (var i = 0; i < n; ++i) {
-    var btn = document.createElement("BUTTON");                  
-    document.body.appendChild(btn); 
+    var btn = document.createElement("BUTTON");
+    document.body.appendChild(btn);
     btn.innerHTML = "buton";
     if (i == (win_nr - 1)) {
       btn.onclick = function() {
         document.getElementById("winMessage").style.display = "block";
         document.getElementById("loseMessage").style.display = "none";
-      }
+      };
     } else {
       btn.onclick = function() {
         document.getElementById("winMessage").style.display = "none";
         document.getElementById("loseMessage").style.display = "block";
-      }
+      };
     }
   }
-  document.getElementById("nextButton").style.display = "none";  
-  document.getElementById("submitButton").style.display = "none";  
+  document.getElementById("nextButton").style.display = "none";
+  document.getElementById("submitButton").style.display = "none";
 }
