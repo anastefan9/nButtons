@@ -19,7 +19,7 @@ function myFunction() {
   }
 }
 
-function getRandomInteger(min, max) { //aflam un numar Random intre min si max (amandoua incluse)
+function getRandomInteger(min, max) { 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function winFunction() {
