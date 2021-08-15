@@ -1,51 +1,32 @@
+var submit_button = document.getElementById("submitButton");
+var win_button = document.getElementById("winMessage");
+var lose_button = document.getElementById("loseMessage");
+
 function myFunction() {
-  var x = document.getElementById("number").value;
-  if (isNaN(x) || x < 0) {
-    document.getElementById("answer").innerHTML = "Datele introduse nu sunt valide!";
-    document.getElementById("nextButton").style.display = "none";
-  } else {
-    document.getElementById("answer").innerHTML = "Input OK";
-    if (x == 1) {
-      document.getElementById("nextButton").innerHTML = "Afiseaza " + x + " buton";
+  submit_button.style.display = "none";
+  var n = document.getElementById("input_number_buttons").value;
+  var win_nr = getRandomInteger(1, n);
+  for (var i = 1; i <= n; ++i) {
+    var object = document.getElementById('container');
+    var button = document.createElement("BUTTON");
+    object.appendChild(button);
+    button.innerHTML = "buton";                       
+    if (i == win_nr) {
+      button.onclick = function() {winFunction()};
     } else {
-      document.getElementById("nextButton").innerHTML = "Afiseaza " + x + " butoane";
+      button.onclick = function() {loseFunction()};
     }
-    document.getElementById("nextButton").style.display = "block";
   }
 }
 
-function buttonFunction() {
-  var n = document.getElementById("number").value;
-  var win_nr;
-  if (n < 2) {
-    win_nr = n;
-  } else if (n < 4) {
-    win_nr = n - 1;
-  } else if (n < 7) {
-    win_nr = n - 3;
-  } else if (n < 11) {
-    win_nr = n - 6;
-  } else if (n < 21) {
-    win_nr = n - 10;
-  } else {
-    win_nr = n - 20;
-  }
-  for (var i = 0; i < n; ++i) {
-    var btn = document.createElement("BUTTON");
-    document.body.appendChild(btn);
-    btn.innerHTML = "buton";
-    if (i == (win_nr - 1)) {
-      btn.onclick = function() {
-        document.getElementById("winMessage").style.display = "block";
-        document.getElementById("loseMessage").style.display = "none";
-      };
-    } else {
-      btn.onclick = function() {
-        document.getElementById("winMessage").style.display = "none";
-        document.getElementById("loseMessage").style.display = "block";
-      };
-    }
-  }
-  document.getElementById("nextButton").style.display = "none";
-  document.getElementById("submitButton").style.display = "none";
+function getRandomInteger(min, max) { //aflam un numar Random intre min si max (amandoua incluse)
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function winFunction() {
+  win_button.style.display = "block";
+  lose_button.style.display = "none";
+}
+function loseFunction() {
+  win_button.style.display = "none";
+  lose_button.style.display = "block";
 }
