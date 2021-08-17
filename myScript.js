@@ -2,7 +2,7 @@ var submit_button = document.getElementById("submitButton");
 var win_button = document.getElementById("winMessage");
 var lose_button = document.getElementById("loseMessage");
 
-function myFunction() {
+function buttonFunction() {
   submit_button.style.display = "none";
   var n = document.getElementById("input_number_buttons").value;
   var win_nr = getRandomInteger(1, n);
@@ -10,11 +10,11 @@ function myFunction() {
     var object = document.getElementById('container');
     var button = document.createElement("BUTTON");
     object.appendChild(button);
-    button.innerHTML = "buton";                       
+    button.innerHTML = "Buton" + " " + i;                       
     if (i == win_nr) {
-      button.onclick = function() {winFunction()};
+      button.onclick = function() {textFunction(win_button, lose_button)};
     } else {
-      button.onclick = function() {loseFunction()};
+      button.onclick = function() {textFunction(lose_button, win_button)};
     }
   }
 }
@@ -22,11 +22,7 @@ function myFunction() {
 function getRandomInteger(min, max) { 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function winFunction() {
-  win_button.style.display = "block";
-  lose_button.style.display = "none";
-}
-function loseFunction() {
-  win_button.style.display = "none";
-  lose_button.style.display = "block";
+function textFunction(win, lose) {
+  win.style.display = "block";
+  lose.style.display = "none";
 }
