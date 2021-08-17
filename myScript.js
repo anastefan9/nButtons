@@ -2,7 +2,7 @@ var submit_button = document.getElementById("submitButton");
 var win_button = document.getElementById("winMessage");
 var lose_button = document.getElementById("loseMessage");
 
-function buttonFunction() {
+function createButtons() {
   submit_button.style.display = "none";
   var n = document.getElementById("input_number_buttons").value;
   var win_nr = getRandomInteger(1, n);
